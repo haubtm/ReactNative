@@ -3,10 +3,10 @@ import SocialButton from "@/components/button/social.button";
 import ShareInput from "@/components/input/share.input";
 import { registerAPI } from "@/utils/api";
 import { APP_COLOR } from "@/utils/constant";
-import axios from "axios";
 import { Link, router } from "expo-router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
+import Toast from 'react-native-root-toast';
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const SignUpPage = () => {
@@ -22,7 +22,10 @@ const SignUpPage = () => {
             if (res.data) {
                 router.navigate("/(auth)/verify")
             } else {
-                // alert(res.message)
+                Toast.show(res.message, {
+                    duration: Toast.durations.LONG,
+                });
+
             }
             console.log(res.data)
         } catch (error) {
