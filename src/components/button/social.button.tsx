@@ -4,12 +4,17 @@ import ShareButton from "./share.button";
 import fbLogo from '@/assets/auth/facebook.png'
 import ggLogo from '@/assets/auth/google.png'
 
-const SocialButton = () => {
+interface IProps {
+    title: string;
+}
+
+const SocialButton = (props: IProps) => {
+    const { title } = props;
     return (
         <View style={styles.welcomeBtn}>
             <TextBetweenLine
                 textColor="black"
-                title="Đăng nhập với" />
+                title={title} />
             <View style={{
                 flexDirection: "row",
                 justifyContent: "center",

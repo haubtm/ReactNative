@@ -17,3 +17,9 @@ export const resendCodeAPI = (email: string) => {
     const url = `/register`;
     return axios.post<IBackendRes<IRegister>>(url, { email })
 }
+
+export const loginAPI = (email: string, password: string) => {
+
+    const url = `/register`;
+    return axios.post<IBackendRes<IRegister>>(url, { username: email, password })
+}
