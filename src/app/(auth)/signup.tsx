@@ -18,12 +18,16 @@ const SignUpPage = () => {
     const handleSignUp = async () => {
         const code = Math.floor(Math.random() * 1000000);
         try {
-            const res = await registerAPI(code, email, password, name);
+            const res = await registerAPI(code.toString(), email, password, name);
             if (res.data) {
-                router.navigate("/(auth)/verify")
+                router.replace({ pathname: "/(auth)/verify", params: { email: email } })
             } else {
-                Toast.show(res.message, {
+                const m = Array.isArray(res.message)
+                    ? res.message[0] : res.message
+                Toast.show(m, {
                     duration: Toast.durations.LONG,
+                    textColor: '#fff',
+                    backgroundColor: 'red',
                 });
 
             }
