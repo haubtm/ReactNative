@@ -4,25 +4,43 @@ import HeaderHome from '@/components/home/header.home';
 import SearchHome from '@/components/home/search.home';
 import TopListHome from '@/components/home/top.list.home';
 import { View, Text, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const data = [
-    { key: 1, name: "Top Quán Rating 5* tuần nầy", ref: "" },
-    { key: 2, name: "Quán mới lên sàn", ref: "" },
-    { key: 3, name: "Ăn thoả thích, Freeship 0Đ", ref: "" },
+    {
+        key: 1,
+        name: "Top Quán Rating 5* tuần nầy",
+        description: "Đừng bỏ lỡ những quán ngon được cộng đồng ưa thích nhất tuần này",
+        ref: ""
+    },
+    {
+        key: 2,
+        name: "Quán mới lên sàn",
+        description: "Các quán mới nhất đã được cập nhật",
+        ref: ""
+    },
+    {
+        key: 3,
+        name: "Ăn thoả thích, Freeship 0Đ",
+        description: "Tận hưởng ưu đãi freeship 0Đ từ các quán ăn yêu thích",
+        ref: ""
+    },
 ]
 const data1 = Array(20).fill(2);
 
 export default function HomeTab() {
     return (
-        <CustomFlatList
-            data={data}
-            style={styles.list}
-            renderItem={({ item }) => <CollectionHome name={item.name} />}
-            HeaderComponent={<HeaderHome />}
-            StickyElementComponent={<SearchHome />}
-            // TopListElementComponent={<View style={styles.topList} />}
-            TopListElementComponent={<TopListHome />}
-        />
+        <SafeAreaView style={{ flex: 1 }}>
+            <CustomFlatList
+                data={data}
+                style={styles.list}
+                renderItem={({ item }) => <CollectionHome name={item.name} description={item.description} />}
+                HeaderComponent={<HeaderHome />}
+                StickyElementComponent={<SearchHome />}
+                // TopListElementComponent={<View style={styles.topList} />}
+                TopListElementComponent={<TopListHome />}
+            />
+        </SafeAreaView>
     );
 }
 
