@@ -9,5 +9,18 @@ declare global {
     interface IRegister {
         id: string;
     }
+
+    interface IUserLogin {
+        user: {
+            id: string;
+            email: string;
+            name: string;
+            role: string;
+            adress: any;
+            avatar: string;
+            phone: string;
+        };
+        accessToken: string;
+    }
 }
 export { };
