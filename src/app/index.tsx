@@ -8,7 +8,25 @@ import ggLogo from '@/assets/auth/google.png'
 import { LinearGradient } from 'expo-linear-gradient'
 import TextBetweenLine from "@/components/button/text.between.line"
 import { Link, Redirect, router } from "expo-router"
+import { useEffect } from "react"
+import { getAccountAPI } from "@/utils/api"
+import { useCurrentApp } from "@/context/app.context"
+
 const WelcomePage = () => {
+    const { setAppState } = useCurrentApp();
+
+    useEffect(() => {
+        const fetchAccount = async () => {
+            const res = await getAccountAPI();
+            if (res.data) {
+                setAppState({
+                    user: res.data.user,
+                })
+                router.navigate("/(tabs)")
+            }
+        }
+        fetchAccount()
+    }, [])
     // if (true) {
     //     return (
     //         <Redirect href={"/(tabs)"} />

@@ -33,3 +33,8 @@ export const loginAPI = (email: string, password: string) => {
     }
     return axios.post<IBackendRes<IUserLogin>>(url, { user: user, accessToken })
 }
+
+export const getAccountAPI = () => {
+    const url = `/register/1`;
+    return axios.get<IBackendRes<IUserLogin>>(url)
+}

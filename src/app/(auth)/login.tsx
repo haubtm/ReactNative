@@ -11,6 +11,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Formik } from "formik";
 import { LoginSchema } from "@/utils/validate.schema";
 import { useCurrentApp } from "@/context/app.context";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const LoginPage = () => {
     const [loading, setLoading] = useState<boolean>(false);
@@ -22,6 +23,7 @@ const LoginPage = () => {
             const res = await loginAPI(email, password);
             setLoading(false);
             if (res.data) {
+                await AsyncStorage.setItem("access_token", res.data.accessToken);
                 setAppState(res.data)
                 router.replace("/(tabs)")
             } else {

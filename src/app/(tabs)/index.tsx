@@ -3,8 +3,7 @@ import CollectionHome from '@/components/home/collection.home';
 import HeaderHome from '@/components/home/header.home';
 import SearchHome from '@/components/home/search.home';
 import TopListHome from '@/components/home/top.list.home';
-import { View, Text, StyleSheet, ScrollView, FlatList } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { View, Text, StyleSheet } from 'react-native';
 
 const data = [
     { key: 1, name: "Top Quán Rating 5* tuần nầy", ref: "" },
