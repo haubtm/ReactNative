@@ -1,4 +1,5 @@
 import axios from "@/utils/axios.customize";
+import { Platform } from "react-native";
 
 export const registerAPI = (code: string, email: string, password: string, name: string) => {
 
@@ -42,4 +43,28 @@ export const getAccountAPI = () => {
 export const getTopRestaurant = (ref: string) => {
     const url = `/register/${ref}`;
     return axios.get<IBackendRes<IGroupRestaurants<ITopRestaurants[]>>>(url)
+}
+
+export const getURLBaseBackend = () => {
+    const backend = Platform.OS === 'android'
+        ? process.env.EXPO_PUBLIC_ANDROID_API_URL
+        : process.env.EXPO_PUBLIC_IOS_API_URL;
+    return backend
+}
+
+export const getRestaurantById = (id: string) => {
+    const url = `/register/${id}`;
+    return axios.get<IBackendRes<IRestaurant>>(url)
+}
+
+export const processDataRestaurantMenu = (restaurant: IRestaurant) => {
+    if (!restaurant) return [];
+    return restaurant?.menu?.map((menu, index) => {
+        return {
+            index,
+            key: menu.id,
+            title: menu.title,
+            data: menu.menuItem
+        }
+    })
 }

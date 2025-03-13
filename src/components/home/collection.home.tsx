@@ -51,9 +51,11 @@ const CollectionHome = (props: IProps) => {
                     renderItem={({ item }) => (
                         <Pressable
 
-                            onPress={() => {
-                                router.navigate("/product")
-                            }}
+                            onPress={() =>
+                                router.navigate({
+                                    pathname: "/product/[id]",
+                                    params: { id: item.id }
+                                })}
                         >
                             <View style={{ backgroundColor: "#efefef" }}>
                                 <Image
