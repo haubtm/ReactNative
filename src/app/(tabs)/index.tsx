@@ -11,19 +11,19 @@ const data = [
         key: 1,
         name: "Top Quán Rating 5* tuần nầy",
         description: "Đừng bỏ lỡ những quán ngon được cộng đồng ưa thích nhất tuần này",
-        ref: ""
+        refAPI: "2"
     },
     {
         key: 2,
         name: "Quán mới lên sàn",
         description: "Các quán mới nhất đã được cập nhật",
-        ref: ""
+        refAPI: "3"
     },
     {
         key: 3,
         name: "Ăn thoả thích, Freeship 0Đ",
         description: "Tận hưởng ưu đãi freeship 0Đ từ các quán ăn yêu thích",
-        ref: ""
+        refAPI: "top"
     },
 ]
 const data1 = Array(20).fill(2);
@@ -34,7 +34,12 @@ export default function HomeTab() {
             <CustomFlatList
                 data={data}
                 style={styles.list}
-                renderItem={({ item }) => <CollectionHome name={item.name} description={item.description} />}
+                renderItem={({ item }) => (
+                    <CollectionHome
+                        name={item.name}
+                        description={item.description}
+                        refAPI={item.refAPI}
+                    />)}
                 HeaderComponent={<HeaderHome />}
                 StickyElementComponent={<SearchHome />}
                 // TopListElementComponent={<View style={styles.topList} />}

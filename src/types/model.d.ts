@@ -22,5 +22,23 @@ declare global {
         };
         accessToken: string;
     }
+
+    interface IGroupRestaurants<T> {
+        id: string;
+        restaurant: T;
+    }
+
+    interface ITopRestaurants {
+        id: string;
+        name: string;
+        phone: string;
+        address: string;
+        email: string;
+        image: string;
+        rating: number;
+        isActive: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }
 }
 export { };

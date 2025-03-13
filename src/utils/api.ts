@@ -38,3 +38,8 @@ export const getAccountAPI = () => {
     const url = `/register/1`;
     return axios.get<IBackendRes<IUserLogin>>(url)
 }
+
+export const getTopRestaurant = (ref: string) => {
+    const url = `/register/${ref}`;
+    return axios.get<IBackendRes<IGroupRestaurants<ITopRestaurants[]>>>(url)
+}
